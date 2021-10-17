@@ -55,7 +55,7 @@ if (command == "up" && row - 1 >= 0)
                 {
                     col--;
                 }
-                else if (command == "right" && col + 1 < territory[row].Length)
+                else if (command == "right" && col + 1 < matrix[row].Length)
                 {
                     col++;
                 }
