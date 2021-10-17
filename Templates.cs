@@ -1,14 +1,7 @@
 ﻿(Console.ReadLine().Split(",").Select(int.Parse));
-==================== print matrix:
-for (int i = 0; i < n; i++)
-{
-    for (int j = 0; j < matrix[i].Length; j++)
-    {
-        Console.Write(matrix[i][j]);
-    }
-    Console.WriteLine();
-}
-===================== fill matrix:
+Matrix Implementation:
+
+==================== fill matrix:
 for (int i = 0; i < n; i++)
 {
    var chars = Console.ReadLine().ToCharArray();
@@ -23,7 +16,7 @@ for (int row = 0; row < n; row++)
         matrix[row, col] = currentRow[col];
     }
 }
-========================= movement:
+==================== movement:
 public static int MoveRow (int row, string movement) 
 {
     if (movement == "up")
@@ -49,7 +42,7 @@ public static int MoveCol(int col, string movement)
     }
     return col;
 }
-============================== or:
+==================== or:
 if (command == "up" && row - 1 >= 0)
                 {
                     row--;
@@ -66,7 +59,7 @@ if (command == "up" && row - 1 >= 0)
                 {
                     col++;
                 }
-============================== bool Validation:
+==================== bool Validation:
 public static bool IsValidPosition (int row, int col, int rows, int cols) 
 {
     if (row < 0 || row >= rows || col < 0 || col >= cols)
@@ -75,3 +68,13 @@ public static bool IsValidPosition (int row, int col, int rows, int cols)
     }
     return true;
 }
+==================== override ToString();
+public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"Name: {Name}");
+            sb.AppendLine($"Age: {Age}");
+            sb.AppendLine($"Owner: {Owner}");
+            return sb.ToString();
+        }
+====================
