@@ -2,9 +2,9 @@
 ==================== print matrix:
 for (int i = 0; i < n; i++)
 {
-    for (int j = 0; j < teritorry[i].Length; j++)
+    for (int j = 0; j < matrix[i].Length; j++)
     {
-        Console.Write(teritorry[i][j]);
+        Console.Write(matrix[i][j]);
     }
     Console.WriteLine();
 }
@@ -12,7 +12,7 @@ for (int i = 0; i < n; i++)
 for (int i = 0; i < n; i++)
 {
    var chars = Console.ReadLine().ToCharArray();
-   teritorry[i] = chars;
+   matrix[i] = chars;
 }
 ==================== or:
 for (int row = 0; row < n; row++)
@@ -50,24 +50,24 @@ public static int MoveCol(int col, string movement)
     return col;
 }
 ============================== or:
-if (command == "up" && beeRow - 1 >= 0)
+if (command == "up" && row - 1 >= 0)
                 {
-                    beeRow--;
+                    row--;
                 }
-                else if (command == "down" && beeRow + 1 < n)
+                else if (command == "down" && row + 1 < n)
                 {
-                    beeRow++;
+                    row++;
                 }
-                else if (command == "left" && beeCol - 1 >= 0)
+                else if (command == "left" && col - 1 >= 0)
                 {
-                    beeCol--;
+                    col--;
                 }
-                else if (command == "right" && beeCol + 1 < territory[beeRow].Length)
+                else if (command == "right" && col + 1 < territory[row].Length)
                 {
-                    beeCol++;
+                    col++;
                 }
 ============================== bool Validation:
-public static bool IsInside (int row, int col, int rows, int cols) 
+public static bool IsValidPosition (int row, int col, int rows, int cols) 
 {
     if (row < 0 || row >= rows || col < 0 || col >= cols)
     {
