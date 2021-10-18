@@ -75,7 +75,7 @@ public override string ToString()
             sb.AppendLine($"Name: {Name}");
             sb.AppendLine($"Age: {Age}");
             sb.AppendLine($"Owner: {Owner}");
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
 ==================== or:
 public override string ToString()
