@@ -92,6 +92,6 @@ public override string ToString()
 ==================== or:
 public override string ToString()
         {
-            return $"Name: {Name} Age: {Age} Owner: {Owner}";
+            return $"Name: {Name} Age: {Age} Owner: {Owner} Mitak: {Mitak}";
         }
 ====================
