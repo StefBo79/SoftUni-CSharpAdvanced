@@ -1,4 +1,8 @@
-﻿(Console.ReadLine().Split(",").Select(int.Parse));
+﻿var name = new Queue<int>(Console.ReadLine().Split().Select(int.Parse)); FIFO
+var name = new Stack<int>(Console.ReadLine().Split().Select(int.Parse)); LIFO
+
+
+(Console.ReadLine().Split(",").Select(int.Parse));
 Matrix Implementation:
 
 ==================== fill matrix:
