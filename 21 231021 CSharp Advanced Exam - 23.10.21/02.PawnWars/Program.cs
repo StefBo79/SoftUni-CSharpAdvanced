@@ -1,87 +1,91 @@
 ﻿using System;
 
-namespace _02._Pawn_Wars
+namespace _02._PawnWars
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string[,] classboard = new string[8, 8];
+            string[,] chessBoard = new string[8, 8];
+
             for (int i = 7; i >= 0; i--)
             {
                 string row = Console.ReadLine();
                 for (int col = 0; col < 8; col++)
                 {
-                    classboard[i, col] = row[col].ToString();
+                    chessBoard[i, col] = row[col].ToString();
                 }
             }
+
             while (true)
             {
-                int rowW = GetRow(classboard, "w");
-                int colW = GetCol(classboard, "w");
-                int rowB = GetRow(classboard, "b");
-                int colB = GetCol(classboard, "b");
+                int rowW = GetRow(chessBoard, "w");
+                int colW = GetCol(chessBoard, "w");
+                int rowB = GetRow(chessBoard, "b");
+                int colB = GetCol(chessBoard, "b");
                 char letterCol = '\0';
+
                 if (colW + 1 < 8 && colW - 1 >= 0)
                 {
-                    if (classboard[rowW + 1, colW + 1] == "b" || classboard[rowW + 1, colW - 1] == "b")
+                    if (chessBoard[rowW + 1, colW + 1] == "b" || chessBoard[rowW + 1, colW - 1] == "b")
                     {
-                        letterCol = GetLetterCol(classboard, colB);
+                        letterCol = GetLetterCol(chessBoard, colB);
                         Console.WriteLine($"Game over! White capture on {letterCol}{rowW + 2}.");
                         break;
                     }
                 }
                 else if (colW + 1 < 8 && colW - 1 < 0)
                 {
-                    if (classboard[rowW + 1, colW + 1] == "b")
+                    if (chessBoard[rowW + 1, colW + 1] == "b")
                     {
-                        letterCol = GetLetterCol(classboard, colB);
+                        letterCol = GetLetterCol(chessBoard, colB);
                         Console.WriteLine($"Game over! White capture on {letterCol}{rowW + 2}.");
                         break;
                     }
                 }
                 else if (colW + 1 >= 8 && colW - 1 >= 0)
                 {
-                    if (classboard[rowW + 1, colW - 1] == "b")
+                    if (chessBoard[rowW + 1, colW - 1] == "b")
                     {
-                        letterCol = GetLetterCol(classboard, colB);
+                        letterCol = GetLetterCol(chessBoard, colB);
                         Console.WriteLine($"Game over! White capture on {letterCol}{rowW + 2}.");
                         break;
                     }
                 }
-                classboard[rowW, colW] = "-";
+
+                chessBoard[rowW, colW] = "-";
                 rowW += 1;
                 if (rowW == 7)
                 {
-                    letterCol = GetLetterCol(classboard, colW);
+                    letterCol = GetLetterCol(chessBoard, colW);
                     Console.WriteLine($"Game over! White pawn is promoted to a queen at {letterCol}{rowW + 1}.");
                     break;
                 }
-                classboard[rowW, colW] = "w";
-                classboard[rowB, colB] = "-";
+                chessBoard[rowW, colW] = "w";
+                chessBoard[rowB, colB] = "-";
                 if (colB + 1 < 8 && colB - 1 >= 0)
                 {
-                    if (classboard[rowB - 1, colB - 1] == "w" || classboard[rowB - 1, colB] == "w")
+                    if (chessBoard[rowB - 1, colB - 1] == "w" || chessBoard[rowB - 1, colB] == "w")
                     {
-                        letterCol = GetLetterCol(classboard, colW);
+                        letterCol = GetLetterCol(chessBoard, colW);
                         Console.WriteLine($"Game over! Black capture on {letterCol}{rowB}.");
                         break;
                     }
                 }
                 else if (colB + 1 < 8 && colB - 1 < 0)
                 {
-                    if (classboard[rowB - 1, colB + 1] == "w")
+                    if (chessBoard[rowB - 1, colB + 1] == "w")
                     {
-                        letterCol = GetLetterCol(classboard, colW);
+                        letterCol = GetLetterCol(chessBoard, colW);
                         Console.WriteLine($"Game over! Black capture on {letterCol}{rowB}.");
                         break;
                     }
                 }
                 else if (colB + 1 >= 8 && colB - 1 >= 0)
                 {
-                    if (classboard[rowB - 1, colB - 1] == "w")
+                    if (chessBoard[rowB - 1, colB - 1] == "w")
                     {
-                        letterCol = GetLetterCol(classboard, colW);
+                        letterCol = GetLetterCol(chessBoard, colW);
                         Console.WriteLine($"Game over! Black capture on {letterCol}{rowB}.");
                         break;
                     }
@@ -89,15 +93,45 @@ namespace _02._Pawn_Wars
                 rowB -= 1;
                 if (rowB == 0)
                 {
-                    letterCol = GetLetterCol(classboard, colB);
+                    letterCol = GetLetterCol(chessBoard, colB);
                     Console.WriteLine($"Game over! Black pawn is promoted to a queen at {letterCol}{rowB + 1}.");
                     break;
                 }
-                classboard[rowB, colB] = "b";
+                chessBoard[rowB, colB] = "b";
             }
         }
 
-        private static char GetLetterCol(string[,] classboard, int colW)
+        private static int GetRow(string[,] board, string v)
+        {
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    if (board[row, col] == v)
+                    {
+                        return row;
+                    }
+                }
+            }
+            return 0;
+        }
+
+        private static int GetCol(string[,] board, string v)
+        {
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    if (board[row, col] == v)
+                    {
+                        return col;
+                    }
+                }
+            }
+            return 0;
+        }
+
+        private static char GetLetterCol(string[,] board, int colW)
         {
             if (colW == 0)
             {
@@ -132,36 +166,6 @@ namespace _02._Pawn_Wars
                 return 'h';
             }
             return '\0';
-        }
-
-        private static int GetCol(string[,] classboard, string v)
-        {
-            for (int row = 0; row < 8; row++)
-            {
-                for (int col = 0; col < 8; col++)
-                {
-                    if (classboard[row, col] == v)
-                    {
-                        return col;
-                    }
-                }
-            }
-            return 0;
-        }
-
-        private static int GetRow(string[,] classboard, string v)
-        {
-            for (int row = 0; row < 8; row++)
-            {
-                for (int col = 0; col < 8; col++)
-                {
-                    if (classboard[row, col] == v)
-                    {
-                        return row;
-                    }
-                }
-            }
-            return 0;
         }
     }
 }
