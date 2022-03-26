@@ -1,10 +1,9 @@
 ﻿using System;
-
 namespace StockMarket
 {
     public class StartUp
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             // Sample Code Usage:
 

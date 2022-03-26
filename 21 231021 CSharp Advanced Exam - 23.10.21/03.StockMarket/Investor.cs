@@ -20,7 +20,8 @@ namespace StockMarket
         public string EmailAddress { get; set; }
         public decimal MoneyToInvest { get; set; }
         public string BrokerName { get; set; }
-        public int Count { get { return portfolio.Count; } }
+        public int Count { get {return portfolio.Count; } }
+
         public void BuyStock(Stock stock)
         {
             if (stock.MarketCapitalization > 10000 && stock.PricePerShare <= MoneyToInvest)
@@ -65,9 +66,10 @@ namespace StockMarket
         {
             return portfolio.OrderByDescending(s => s.MarketCapitalization).FirstOrDefault();
         }
+
         public string InvestorInformation()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendLine($"The investor {FullName} with a broker {BrokerName} has stocks:");
             foreach (var stock in portfolio)
             {
