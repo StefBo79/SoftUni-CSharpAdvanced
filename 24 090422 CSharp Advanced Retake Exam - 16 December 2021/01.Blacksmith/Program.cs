@@ -118,8 +118,3 @@ namespace _01.Blacksmith
         }
     }
 }
-//o "Broadsword: {amount}"
-//o "Sabre: {amount}"
-//o "Katana: {amount}"
-//o "Shamshir: {amount}"
-//o "Gladius: {amount}"
